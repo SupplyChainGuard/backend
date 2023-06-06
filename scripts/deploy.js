@@ -47,7 +47,7 @@ console.log('Contract ABI generated and saved to', abiFilePath);
 const deploy = async () => {
     const accounts = await web3.eth.getAccounts();
     const account = accounts[0];
-    const privateKey = '0xea019fa103965d118d05c7686d151341e66f2e33b491c9900fd1b4425bdc603d'; // Replace with your actual private key
+    const privateKey = '0x63c6e17045944125d03df372775e36a64da051c34407a016fc7e57d2ec1c0c61'; // Replace with your actual private key
 
     const MyContract = new web3.eth.Contract(contractAbi);
     const deployTransaction = MyContract.deploy({ data: '0x' + contractBytecode });

@@ -1,0 +1,581 @@
+{
+  "info": {
+    "_postman_id": "4b2a0fe4-7c2a-46e2-bf3a-52a6780c6e61",
+    "name": "Inventory API",
+    "description": "API endpoints for managing inventory",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"[user_id]\",\n  \"firstName\": \"[first_name]\",\n  \"lastName\": \"[last_name]\",\n  \"email\": \"[email]\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Create a new user"
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"[first_name]\",\n  \"lastName\": \"[last_name]\",\n  \"email\": \"[email]\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Update an existing user"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Delete a user"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Get user details"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get Product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/products/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "products",
+                "123"
+              ]
+            },
+            "description": "Get product details"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "products"
+              ]
+            },
+            "description": "Get all products"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"123\",\n  \"name\": \"Product 1\",\n  \"stock\": 10,\n  \"category\": \"Electronics\",\n  \"status\": \"0\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "products"
+              ]
+            },
+            "description": "Create a new product"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Product\",\n  \"stock\": 20,\n  \"category\": \"Electronics\",\n  \"status\": \"0\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/products/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "products",
+                "123"
+              ]
+            },
+            "description": "Update an existing product"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/products/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "products",
+                "123"
+              ]
+            },
+            "description": "Delete a product"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Provider",
+      "item": [
+        {
+          "name": "Get Provider",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/providers/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "providers",
+                "123"
+              ]
+            },
+            "description": "Get provider details"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Providers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/providers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "providers"
+              ]
+            },
+            "description": "Get all providers"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Provider",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"123\",\n  \"name\": \"Provider 1\",\n  \"category\": \"Category 1\",\n  \"status\": \"Active\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/providers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "providers"
+              ]
+            },
+            "description": "Create a new provider"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Provider",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Provider\",\n  \"category\": \"Updated Category\",\n  \"status\": \"Inactive\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/providers/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "providers",
+                "123"
+              ]
+            },
+            "description": "Update an existing provider"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Provider",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/providers/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "providers",
+                "123"
+              ]
+            },
+            "description": "Delete a provider"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Shipment",
+      "item": [
+        {
+          "name": "Get Shipment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/shipments/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "shipments",
+                "123"
+              ]
+            },
+            "description": "Get shipment details"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Shipments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/shipments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "shipments"
+              ]
+            },
+            "description": "Get all shipments"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Shipment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"123\",\n  \"productSKU\": \"Product 1\",\n  \"quantity\": 10,\n  \"date\": \"2023-06-05\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/shipments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "shipments"
+              ]
+            },
+            "description": "Create a new shipment"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Shipment",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productSKU\": \"Updated Product\",\n  \"quantity\": 5,\n  \"date\": \"2023-06-10\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/shipments/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "shipments",
+                "123"
+              ]
+            },
+            "description": "Update an existing shipment"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Shipment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/shipments/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "shipments",
+                "123"
+              ]
+            },
+            "description": "Delete a shipment"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Get Order",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/orders/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "orders",
+                "123"
+              ]
+            },
+            "description": "Get order details"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "orders"
+              ]
+            },
+            "description": "Get all orders"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"123\",\n  \"providerId\": \"456\",\n  \"productSKU\": \"Product 1\",\n  \"quantity\": 10,\n  \"date\": \"2023-06-05\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "orders"
+              ]
+            },
+            "description": "Create a new order"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"providerId\": \"789\",\n  \"productSKU\": \"Updated Product\",\n  \"quantity\": 5,\n  \"date\": \"2023-06-10\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/orders/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "orders",
+                "123"
+              ]
+            },
+            "description": "Update an existing order"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Order",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:3000/orders/123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "orders",
+                "123"
+              ]
+            },
+            "description": "Delete an order"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
