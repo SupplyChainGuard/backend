@@ -1,22 +1,21 @@
 const express = require("express");
 const Web3 = require("web3");
-const contractAbi = require("./contracts/abi/InventoryAbi.json"); // Replace with the path to your contract ABI file
+const contractAbi = require("../ethereum/contracts/abi/InventoryAbi.json"); // Replace with the path to your contract ABI file
+const contractReciept = require("../ethereum/contracts/receipt/InventoryReceipt.json"); // Replace with the path to your contract receipt file
 
 const app = express();
-const web3 = new Web3("HTTP://127.0.0.1:7545");
-const contractAddress = "0xb231b2E3C3704c5fabD3a096B400433346c892d2";
-const contract = new web3.eth.Contract(contractAbi, contractAddress);
-const accountPrivateKey = "0x63c6e17045944125d03df372775e36a64da051c34407a016fc7e57d2ec1c0c61"; // Replace with your actual private key
+// const ganacheUrl = 'HTTP://127.0.0.1:7545'; // local ganache
+const ganacheUrl = "http://ganache:8545"; // docker-compose.yml
+const web3 = new Web3(ganacheUrl);
+const contract = new web3.eth.Contract(contractAbi, contractReciept.address);
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
 // USER ENDPOINTS
 app.post("/users", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address = accounts[0];
   const { id, firstName, lastName, email } = req.body;
 
   contract.methods
@@ -32,10 +31,8 @@ app.post("/users", async (req, res) => {
 });
 
 app.put("/users", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { firstName, lastName, email } = req.body;
 
   contract.methods
@@ -51,10 +48,8 @@ app.put("/users", async (req, res) => {
 });
 
 app.delete("/users", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .deleteUser()
@@ -69,10 +64,8 @@ app.delete("/users", async (req, res) => {
 });
 
 app.get("/users", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .getUser()
@@ -95,10 +88,8 @@ app.get("/users", async (req, res) => {
 
 // PRODUCT ENDPOINTS
 app.get("/products/:sku", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { sku } = req.params;
 
   contract.methods
@@ -120,10 +111,8 @@ app.get("/products/:sku", async (req, res) => {
 });
 
 app.get("/products", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .getAllProducts()
@@ -147,10 +136,8 @@ app.get("/products", async (req, res) => {
 });
 
 app.post("/products", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id, name, stock, category, status } = req.body;
 
   contract.methods
@@ -166,10 +153,8 @@ app.post("/products", async (req, res) => {
 });
 
 app.put("/products/:sku", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { sku } = req.params;
   const { name, stock, category, status } = req.body;
 
@@ -186,10 +171,8 @@ app.put("/products/:sku", async (req, res) => {
 });
 
 app.delete("/products/:sku", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { sku } = req.params;
 
   contract.methods
@@ -207,10 +190,8 @@ app.delete("/products/:sku", async (req, res) => {
 
 // PROVIDER ENDPOINTS
 app.get("/providers/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id } = req.params;
 
   contract.methods
@@ -232,10 +213,8 @@ app.get("/providers/:id", async (req, res) => {
 });
 
 app.get("/providers", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .getAllProviders()
@@ -259,10 +238,8 @@ app.get("/providers", async (req, res) => {
 });
 
 app.post("/providers", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id, name, category, status } = req.body;
 
   contract.methods
@@ -278,10 +255,8 @@ app.post("/providers", async (req, res) => {
 });
 
 app.put("/providers/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id } = req.params;
   const { name, category, status } = req.body;
 
@@ -298,10 +273,8 @@ app.put("/providers/:id", async (req, res) => {
 });
 
 app.delete("/providers/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .deleteProvider(id)
@@ -318,10 +291,8 @@ app.delete("/providers/:id", async (req, res) => {
 
 // SHIPMENT ENDPOINTS
 app.get("/shipments/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id } = req.params;
 
   contract.methods
@@ -344,10 +315,8 @@ app.get("/shipments/:id", async (req, res) => {
 });
 
 app.get("/shipments", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .getAllShipments()
@@ -372,10 +341,8 @@ app.get("/shipments", async (req, res) => {
 });
 
 app.post("/shipments", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id, productSKU, quantity, date } = req.body;
 
   contract.methods
@@ -391,10 +358,8 @@ app.post("/shipments", async (req, res) => {
 });
 
 app.put("/shipments/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id } = req.params;
   const { productSKU, quantity, date } = req.body;
 
@@ -411,10 +376,8 @@ app.put("/shipments/:id", async (req, res) => {
 });
 
 app.delete("/shipments/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .deleteShipment(id)
@@ -431,10 +394,8 @@ app.delete("/shipments/:id", async (req, res) => {
 
 // ORDER ENDPOINTS
 app.get("/orders/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id } = req.params;
 
   contract.methods
@@ -458,10 +419,8 @@ app.get("/orders/:id", async (req, res) => {
 });
 
 app.get("/orders", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .getAllOrders()
@@ -487,10 +446,8 @@ app.get("/orders", async (req, res) => {
 });
 
 app.post("/orders", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id, providerId, productSKU, quantity, date } = req.body;
 
   contract.methods
@@ -506,10 +463,8 @@ app.post("/orders", async (req, res) => {
 });
 
 app.put("/orders/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
   const { id } = req.params;
   const { providerId, productSKU, quantity, date } = req.body;
 
@@ -526,10 +481,8 @@ app.put("/orders/:id", async (req, res) => {
 });
 
 app.delete("/orders/:id", async (req, res) => {
-  const account = await web3.eth.accounts.privateKeyToAccount(
-    accountPrivateKey
-  );
-  const address = account.address;
+  const accounts = await web3.eth.getAccounts();
+  const address= accounts[0];
 
   contract.methods
     .deleteOrder(id)
@@ -545,7 +498,7 @@ app.delete("/orders/:id", async (req, res) => {
 // END ORDER ENDPOINTS
 
 // Start the Express server
-const port = 3000;
+const port = 4000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

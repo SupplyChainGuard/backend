@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  ganache:
+    image: sebastianbran/scg-ganache-cli:1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile.ganache
+    ports:
+      - "8545:8545"
+
+  service:
+    image: sebastianbran/scg-service:1.0.0
+    build:
+      context: .
+    ports:
+      - "4000:4000"
+    depends_on:
+      - ganache

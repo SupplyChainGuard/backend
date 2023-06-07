@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./ethereum/deploy.js && node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,7 +12,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
-    "solc": "^0.8.0",
+    "solc": "^0.7.6",
     "web3": "^1.10.0"
   }
 }
