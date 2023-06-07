@@ -26,7 +26,7 @@ List the prerequisites and dependencies required to run the project. Include ins
 2. Run the following command to start the Docker containers:
 
    ```bash
-   docker-compose up -d
+   docker-compose up --build
 
 ## Usage
 Import the postman collection to test the API endpoints.
