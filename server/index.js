@@ -12,6 +12,11 @@ const contract = new web3.eth.Contract(contractAbi, contractReciept.address);
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// LIVE
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 // USER ENDPOINTS
 app.post("/users", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
@@ -498,7 +503,8 @@ app.delete("/orders/:id", async (req, res) => {
 // END ORDER ENDPOINTS
 
 // Start the Express server
-const port = 4000;
+const port = 80;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Contract address: ${JSON.stringify(contract)}`);
 });
