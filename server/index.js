@@ -1,4 +1,7 @@
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+
 const app = express();
 
 // Routes
@@ -10,6 +13,8 @@ const shipmentRouter = require("./routes/ShipmentRouter");
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // LIVE
 app.get("/", (req, res) => {
