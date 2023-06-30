@@ -96,6 +96,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
   const address= accounts[0];
+  const { id } = req.params;
 
   contract.methods
     .deleteProvider(id)
