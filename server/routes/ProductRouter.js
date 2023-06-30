@@ -5,7 +5,7 @@ const Web3 = require("web3");
 const contractAbi = require("../../ethereum/contracts/abi/InventoryAbi.json");
 const contractReciept = require("../../ethereum/contracts/receipt/InventoryReceipt.json");
 
-const ganacheUrl = "http://ganache:8545";
+const { ganacheUrl } = require("./Common.js");
 const web3 = new Web3(ganacheUrl);
 const contract = new web3.eth.Contract(contractAbi, contractReciept.address);
 
