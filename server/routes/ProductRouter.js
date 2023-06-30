@@ -12,20 +12,21 @@ const contract = new web3.eth.Contract(contractAbi, contractReciept.address);
 // PRODUCT ENDPOINTS
 router.get("/:sku", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
-  const address= accounts[0];
+  const address = accounts[0];
   const { sku } = req.params;
 
   contract.methods
     .getProduct(sku)
     .call({
-      from: address
+      from: address,
     })
     .then((result) => {
       const id = result[0];
       const name = result[1];
       const stock = result[2];
-      const status = result[3];
-      res.json({ id, name, stock, status });
+      const category = result[3];
+      const status = result[4];
+      res.json({ id, name, stock, category, status });
     })
     .catch((error) => {
       console.error(error);
@@ -35,20 +36,21 @@ router.get("/:sku", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
-  const address= accounts[0];
+  const address = accounts[0];
 
   contract.methods
     .getAllProducts()
     .call({
-      from: address
+      from: address,
     })
     .then((result) => {
       const products = result.map((product) => {
         const id = product[0];
         const name = product[1];
         const stock = product[2];
-        const status = product[3];
-        return { id, name, stock, status };
+        const category = product[3];
+        const status = product[4];
+        return { id, name, stock, category, status };
       });
       res.json(products);
     })
@@ -60,7 +62,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
-  const address= accounts[0];
+  const address = accounts[0];
   const { id, name, stock, category, status } = req.body;
 
   contract.methods
@@ -77,7 +79,7 @@ router.post("/", async (req, res) => {
 
 router.put("/:sku", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
-  const address= accounts[0];
+  const address = accounts[0];
   const { sku } = req.params;
   const { name, stock, category, status } = req.body;
 
@@ -95,7 +97,7 @@ router.put("/:sku", async (req, res) => {
 
 router.delete("/:sku", async (req, res) => {
   const accounts = await web3.eth.getAccounts();
-  const address= accounts[0];
+  const address = accounts[0];
   const { sku } = req.params;
 
   contract.methods
