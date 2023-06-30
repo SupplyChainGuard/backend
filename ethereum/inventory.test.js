@@ -103,7 +103,8 @@ describe("Products", () => {
     expect(+product[0]).toBe(sku);
     expect(product[1]).toBe(name);
     expect(+product[2]).toBe(stock);
-    expect(+product[3]).toBe(status);
+    expect(product[3]).toBe(category);
+    expect(+product[4]).toBe(status);
   });
 
   test("should update a product", async () => {
@@ -126,7 +127,8 @@ describe("Products", () => {
 
     expect(product[1]).toBe(name);
     expect(+product[2]).toBe(stock);
-    expect(+product[3]).toBe(status);
+    expect(product[3]).toBe(category);
+    expect(+product[4]).toBe(status);
   });
 
   test("should delete a product", async () => {

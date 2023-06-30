@@ -3,7 +3,7 @@ const solc = require('solc');
 const fs = require('fs');
 
 // Connect to Ganache
-// const ganacheUrl = 'HTTP://127.0.0.1:7545'; // local ganache
+//const ganacheUrl = 'HTTP://127.0.0.1:7545'; // local ganache
 const ganacheUrl = "http://ganache:8545"; // docker-compose.yml
 const web3 = new Web3(ganacheUrl);
 

@@ -97,9 +97,9 @@ contract Inventory {
     // END USER FUNCTIONS
 
     // START PRODUCT FUNCTIONS
-    function getProduct(uint256 sku) public view returns (uint256, string memory, uint256, ProductStatus) {
+    function getProduct(uint256 sku) public view returns (uint256, string memory, uint256, string memory, ProductStatus) {
         Product memory product = users[msg.sender].products[sku];
-        return (product.sku, product.name, product.stock, product.status);
+        return (product.sku, product.name, product.stock, product.category, product.status);
     }
 
     function getAllProducts() public view returns (Product[] memory) {
